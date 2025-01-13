@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A L 1</title>
+    <title>AL1</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@
             align-items: center;
             overflow: hidden;
             background: #000; /* Base background color */
-            position: relative; /* Ensure ::before aligns with body */
+            position: relative; /* Ensure pseudo-elements align with body */
         }
 
         /* Smoke animation container */
@@ -32,7 +32,7 @@
             animation: smoke 8s infinite alternate ease-in-out;
             opacity: 0.8;
             pointer-events: none; /* Prevent interaction */
-            z-index: -1; /* Keep behind content */
+            z-index: -2; /* Keep behind everything */
         }
 
         @keyframes smoke {
@@ -50,6 +50,22 @@
                 transform: scale(1) translate(0, 0);
                 filter: blur(5px);
             }
+        }
+
+        /* Smokey text */
+        .smokey-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15vw; /* Adjust for responsiveness */
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.1); /* Transparent white */
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 50px rgba(255, 255, 255, 0.1);
+            pointer-events: none; /* Prevent interaction */
+            z-index: -1; /* Place behind other elements */
+            mix-blend-mode: screen; /* Smokey blend with the background */
         }
 
         h1 {
@@ -92,6 +108,7 @@
     </style>
 </head>
 <body>
+    <div class="smokey-text">AL1</div>
     <h1>PWORD</h1>
     <input type="password" id="password" placeholder="pword">
     <button onclick="checkPassword()">GO</button>
